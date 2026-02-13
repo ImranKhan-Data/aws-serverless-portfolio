@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imran Khan | Cloud Data Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF9900; /* AWS Orange */
+            --primary-glow: rgba(255, 153, 0, 0.6);
+            --bg: #111;
+            --card-bg: #1e1e1e;
+            --text: #f0f0f0;
+            --text-secondary: #b0b0b0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 5px var(--primary-glow); color: #fff; }
+            50% { text-shadow: 0 0 20px var(--primary), 0 0 10px var(--primary); color: var(--primary); }
+            100% { text-shadow: 0 0 5px var(--primary-glow); color: #fff; }
+        }
+
+        /* The "Breathing" Zoom Effect */
+        @keyframes breathe {
+            0% { transform: scale(1); box-shadow: 0 0 20px var(--primary-glow); }
+            50% { transform: scale(1.05); box-shadow: 0 0 40px var(--primary-glow); }
+            100% { transform: scale(1); box-shadow: 0 0 20px var(--primary-glow); }
+        }
+
+        /* Auto-Scroll for Projects */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+
+        .keyword-highlight {
+            font-weight: bold;
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: radial-gradient(circle at center, #222 0%, #111 100%);
+        }
+
+        .profile-img {
+            width: 170px; height: 170px; border-radius: 50%;
+            border: 3px solid var(--primary); object-fit: cover;
+            /* Applying the default breathing animation */
+            animation: breathe 4s ease-in-out infinite; 
+        }
+
+        h1 { font-size: 2.8rem; margin: 1rem 0 0.5rem; }
+        .role { color: var(--primary); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold;}
+
+        /* --- CONTAINER --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+        section { margin-bottom: 5rem; }
+        h2 { border-left: 5px solid var(--primary); padding-left: 1rem; margin-bottom: 2rem; font-size: 2rem; }
+
+        /* --- PROJECT SLIDER --- */
+        .slider-container { width: 100%; overflow: hidden; position: relative; }
+        .slider-track { display: flex; gap: 2rem; width: max-content; animation: scroll 25s linear infinite; }
+        .slider-track:hover { animation-play-state: paused; }
+
+        .project-card {
+            background: var(--card-bg);
+            min-width: 350px;
+            padding: 2rem;
+            border-radius: 12px;
+            border-top: 3px solid var(--primary);
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+        .project-card:hover { transform: translateY(-10px); background: #252525; }
+
+        .expander-content { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #333; color: var(--text-secondary); font-size: 0.9rem; }
+        .toggle-btn { background: none; border: none; color: var(--primary); cursor: pointer; margin-top: 1rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; }
+        .toggle-btn:hover { text-decoration: underline; }
+
+        /* --- SKILLS GRID --- */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;}
+        .skill-tag { background: #222; padding: 0.8rem 1.5rem; border-radius: 8px; border: 1px solid #444; transition: 0.3s; }
+        .skill-tag:hover { border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); transform: translateY(-3px); }
+
+        /* --- EDUCATION --- */
+        .edu-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #444;
+            transition: 0.3s;
+        }
+        .edu-item:hover { border-left-color: var(--primary); transform: translateX(10px); }
+        .edu-title { font-size: 1.2rem; color: #fff; font-weight: bold; }
+        .edu-meta { color: var(--primary); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .edu-desc { color: var(--text-secondary); font-size: 0.9rem; }
+
+        /* --- EXTRA INFO GRID (Languages/Interests) --- */
+        .extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        @media (max-width: 768px) { .extra-grid { grid-template-columns: 1fr; } }
+        
+        .list-item { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .list-item i { color: var(--primary); width: 20px; }
+
+        /* --- FOOTER --- */
+        .social-links { margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; }
+        .social-links a { color: #fff; text-decoration: none; font-size: 1.5rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--primary); transform: scale(1.2); }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="imran-linkedin-profile-picture.png" alt="Imran Khan" class="profile-img">
+        <h1>Imran Khan</h1>
+        <div class="role">Cloud Data Engineer</div>
+        <p style="color: #bbb; max-width: 600px; margin: 1rem auto;">
+            Specializing in <span class="keyword-highlight">Serverless ETL</span>, 
+            <span class="keyword-highlight">Data Lakes</span>, and 
+            <span class="keyword-highlight">Automation</span>.
+        </p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/imran-khan-data-engineer"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/ImranKhan-Data"><i class="fab fa-github"></i></a>
+            <a href="mailto:imrankhan45239@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section>
+            <h2>Technical Arsenal</h2>
+            <div class="skills-grid">
+                <div class="skill-tag"><i class="fab fa-aws"></i> AWS Lambda</div>
+                <div class="skill-tag"><i class="fas fa-database"></i> S3 & Glue</div>
+                <div class="skill-tag"><i class="fas fa-search"></i> Amazon Athena</div>
+                <div class="skill-tag"><i class="fab fa-python"></i> <span class="keyword-highlight">Python</span></div>
+                <div class="skill-tag"><i class="fab fa-docker"></i> <span class="keyword-highlight">Docker</span></div>
+                <div class="skill-tag"><i class="fas fa-server"></i> PostgreSQL</div>
+                <div class="skill-tag"><i class="fas fa-table"></i> DynamoDB</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Featured Projects (Hover to Pause)</h2>
+            <div class="slider-container">
+                <div class="slider-track" id="sliderTrack">
+                    
+                    <div class="project-card">
+                        <h3><i class="fas fa-coins"></i> Crypto ETL Pipeline</h3>
+                        <p style="color:var(--primary); font-size:0.9rem; margin:0.5rem 0;">AWS Lambda • Docker • RDS</p>
+                        <p>Automated pipeline extracting market data to PostgreSQL.</p>
+                        <button class="toggle-btn" onclick="toggleExpander(this)">
+                            <i class="fas fa-chevron-down"></i> View Details
+                        </button>
+                        <div class="expander-content">
+                            • <strong>Automation:</strong> EventBridge triggers Lambda daily.<br>
+                            • <strong>Visualization:</strong> Connected to Streamlit dashboard.<br>
+                            • <strong>Tech:</strong> <span class="keyword-highlight">Pandas</span> & <span class="keyword-highlight">SQLAlchemy</span>.
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3><i class="fas fa-water"></i> Serverless Data Lake</h3>
+                        <p style="color:var(--primary); font-size:0.9rem; margin:0.5rem 0;">AWS Glue • Athena • S3</p>
+                        <p>Cost-efficient lake for e-commerce logs.</p>
+                        <button class="toggle-btn" onclick="toggleExpander(this)">
+                            <i class="fas fa-chevron-down"></i> View Details
+                        </button>
+                        <div class="expander-content">
+                            • <strong>Discovery:</strong> Glue Crawlers infer schema.<br>
+                            • <strong>Querying:</strong> <span class="keyword-highlight">Serverless SQL</span> via Athena.<br>
+                            • <strong>Storage:</strong> Partitioned S3 buckets.
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3><i class="fas fa-bell"></i> Real-Time Sales Alerting</h3>
+                        <p style="color:var(--primary); font-size:0.9rem; margin:0.5rem 0;">SNS • Lambda • EventBridge</p>
+                        <p>Immediate email alerts for high-value transactions.</p>
+                        <button class="toggle-btn" onclick="toggleExpander(this)">
+                            <i class="fas fa-chevron-down"></i> View Details
+                        </button>
+                        <div class="expander-content">
+                            • <strong>Pattern:</strong> Management by Exception.<br>
+                            • <strong>Logic:</strong> Python filters JSON payloads.<br>
+                            • <strong>Speed:</strong> <span class="keyword-highlight">Sub-second latency</span>.
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h3><i class="fas fa-book"></i> Library Data Pipeline</h3>
+                        <p style="color:var(--primary); font-size:0.9rem; margin:0.5rem 0;">Watchdog • Docker • Metabase</p>
+                        <p>Local file monitoring triggering ingestion.</p>
+                        <button class="toggle-btn" onclick="toggleExpander(this)">
+                            <i class="fas fa-chevron-down"></i> View Details
+                        </button>
+                        <div class="expander-content">
+                            • <strong>Enrichment:</strong> Google Books API integration.<br>
+                            • <strong>BI:</strong> Metabase connected to Dockerized DB.<br>
+                            • <strong>Tech:</strong> <span class="keyword-highlight">PostgreSQL</span>.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            
+            <div class="edu-item">
+                <div class="edu-title">M.Sc. Web and Data Science</div>
+                <div class="edu-meta">University of Koblenz, Germany | 04/2025 – Present</div>
+                <div class="edu-desc">Focus: Data Management, Information Retrieval, Web Engineering.</div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-title">B.Sc. Computer Engineering</div>
+                <div class="edu-meta">BUITEMS, Pakistan | 10/2018 – 02/2023</div>
+                <div class="edu-desc">Capstone: Designed and implemented a comprehensive system architecture project.</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="extra-grid">
+                
+                <div>
+                    <h2>Languages</h2>
+                    <div class="edu-item" style="border-left-color: #fff;">
+                        <div class="list-item"><i class="fas fa-language"></i> <strong>English:</strong> C1 (Proficient)</div>
+                        <div class="list-item"><i class="fas fa-language"></i> <strong>German:</strong> A2 (Elementary)</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2>Interests</h2>
+                    <div class="edu-item" style="border-left-color: #fff;">
+                        <div class="list-item"><i class="fas fa-cloud"></i> Cloud Architecture</div>
+                        <div class="list-item"><i class="fas fa-baseball-ball"></i> Cricket</div>
+                        <div class="list-item"><i class="fas fa-podcast"></i> Technical Podcasts</div>
+                        <div class="list-item"><i class="fas fa-plane"></i> Traveling</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Built on AWS S3 • Designed by Imran Khan</p>
+    </footer>
+
+    <script>
+        function toggleExpander(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                icon.className = "fas fa-chevron-down";
+                btn.innerHTML = '<i class="fas fa-chevron-down"></i> View Details';
+            } else {
+                content.style.display = "block";
+                icon.className = "fas fa-chevron-up";
+                btn.innerHTML = '<i class="fas fa-chevron-up"></i> Hide Details';
+            }
+        }
+
+        const track = document.getElementById('sliderTrack');
+        const cards = Array.from(track.children);
+        cards.forEach(card => {
+            const clone = card.cloneNode(true);
+            track.appendChild(clone);
+        });
+    </script>
+
+</body>
+</html>
